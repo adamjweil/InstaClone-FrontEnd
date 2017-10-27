@@ -1,0 +1,165 @@
+.App {
+  /*text-align: center;*/
+  width: 1200px;
+  /*max-width: 780px;*/
+  padding-bottom: 2em;
+  margin: 0 auto 2em;
+  background: #fff;
+  border-radius: .5em;
+  box-shadow: 0 3px rgba(0,0,0, .1);
+  overflow: hidden;
+}
+header {
+  background: #edeff0;
+  /*margin-bottom: 2em;*/
+  height: 75px;
+  margin-top: 0px;
+  /*width: auto*/
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+ul.main-nav {
+  list-style: none;
+  /*min-width: 1000px;*/
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  /*align-content: stretch;*/
+  padding-top: -30px;
+  margin-top: -10px;
+}
+ul.main-nav li {
+  /*padding-top: 25px;*/
+  /*display: inline;*/
+  /*flex-grow: 1;*/
+  /*width: 1000px*/
+  /*width: 100px;*/
+  /*margin: auto;*/
+}
+.main-nav a {
+  font-size: .95em;
+  color: #222;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline;
+  padding: 1em;
+  transition: .2s;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  /*flex-grow: 1;*/
+  /*margin: auto;*/
+}
+.main-nav a:hover,
+.main-nav .active {
+  color: #fff;
+  background: #3b80d1;
+}
+.photoimg {
+   max-width: 300px;
+   max-height: 250px;
+   /*border-radius: 10px;*/
+ }
+ .timeline {
+   float: left;
+   padding:
+   /*position: relative;
+   overflow: hidden;*/
+ }
+ .photo {
+   padding: 10px;
+   margin: 10px;
+   width: 305px;
+   height: 270px;
+   border-width: 1px;
+   border-color: #4169E1;
+   border-style: solid;
+   display: inline-block;
+ }
+ .photo p {
+   text-align: center;
+   font-size: 12px;
+ }
+ body {
+   background: #5fcf80;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+ }
+ .home {
+   width: 900;
+   background: #FFF;
+ }
+ .main-content {
+  padding: 1em 2em;
+}
+.description {
+  background-color: #F0F8FF;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #F5FFFA;
+  border-width: 1px;
+  padding: 5px;
+}
+.avatarColumn {
+  float: left;
+  width: 50%;
+  font-size: 10px;
+}
+
+.profileHeader {
+   content: "";
+   display: table;
+   clear: both;
+   background-color: #F8F8F8;
+}
+.bio {
+  font-size: 20px;
+  text-align: center;
+  margin-right: 40px;
+  margin-top: 100px;
+}
+
+div.profile-info {
+  max-height: 250px;
+  display: inline-block;
+  border-style: solid;
+  border-color: #5fcf80;
+  border-width: 1px;
+  background: #F5F5F5;
+}
+img.avatar {
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-left: 100px;
+  height: 200px;
+}
+.avatarColumn h2 {
+  margin-left: 150px;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
