@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// import Button from 'muicss/lib/react/button';
 // import Img from 'react-image';
-
+// import { Button, IconButton, HamburgerButton, FloatingButton, FlatButton } from 'react-buttons';
+// import PureRenderMixin from 'react-addons-pure-render-mixin';
+// import { Button, IconButton, HamburgerButton, FloatingButton, FlatButton } from 'react-buttons';
 class NewPhotoForm extends Component {
   render() {
+
     const now = Date.now();
     return (
       <section id="new-photo-form">
@@ -25,9 +29,12 @@ class NewPhotoForm extends Component {
           <input
             type="hidden"
             onChange={this.props.handleDateInput}
-            value={now} /><br />
-          <button type="submit" name="submit" value="submit">Submit</button>
+            value={now} />
+
+          <button type="submit" name="submit" value="submit">SUBMIT</button>
+
         </form>
+
       </section>
     );
   }
