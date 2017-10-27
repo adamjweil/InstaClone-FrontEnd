@@ -18,6 +18,7 @@ class App extends Component {
       base64: "",
       username: "",
       created_at: "",
+      userPhotos: []
     };
     this.newPhotoSubmitHandler = this.newPhotoSubmitHandler.bind(this);
     this.handlePhotoInput = this.handlePhotoInput.bind(this);
@@ -25,6 +26,16 @@ class App extends Component {
     this.handleBlurbInput = this.handleBlurbInput.bind(this);
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
   }
+
+  getUserPhotos = () => {
+    fetch('http://localhost:3000/adamjweil')
+    .then(function(response) {
+      return response.json();
+    })
+    .then((obj) => {
+      this.setState({ userPhotos: obj })
+    })
+  };
 
   getPhotos = () => {
     fetch('http://localhost:3000/photos')
@@ -34,9 +45,11 @@ class App extends Component {
       .then((obj) => {
       this.setState({photos: obj});
     })
-  }
+  };
+
   componentDidMount() {
     this.getPhotos();
+    this.getUserPhotos();
   }
 
   handlePhotoInput = e => {
@@ -81,7 +94,13 @@ class App extends Component {
         this.setState({photos: [obj].concat(that.state.photos)})
       })
       .catch(error => console.error("fetch error: ", error))
+      this.setState({
+        blurb: '',
+        base64: '',
+        username: ''
+      })
       // this.getPhotos();
+      this.getUserPhotos();
   }
 
   render() {
@@ -93,11 +112,21 @@ class App extends Component {
               <Route exact path="/" render={ () => <Home
                                                     photos={this.state.photos}
                                                     title="Recently Added Photos"
-                                                    NavHeader="Home Page" /> } />
+                                                    NavHeader="Home Page"
+                                                    newPhotoSubmitHandler={this.newPhotoSubmitHandler}
+                                                    handleBlurbInput={this.handleBlurbInput}
+                                                    handlePhotoInput={this.handlePhotoInput}
+                                                    handleUsernameInput={this.handleUsernameInput}
+                                                    handleDateInput={this.handleDateInput}
+                                                    base64={this.state.base64}
+                                                    blurb={this.state.blurb}
+                                                    username={this.state.username}
+                                                    created_at={this.state.created_at} /> } />
               <Route path="/profile" render={ () => <Profile
-                                                    photos={this.state.photos}
+                                                    photos={this.state.userPhotos}
                                                     title="Timeline"
-                                                    NavHeader="Profile Page"
+                                                    getUserPhotos={this.getUserPhotos}
+                                                    userPhotos={this.state.userPhotos}
                                                     newPhotoSubmitHandler={this.newPhotoSubmitHandler}
                                                     handleBlurbInput={this.handleBlurbInput}
                                                     handlePhotoInput={this.handlePhotoInput}

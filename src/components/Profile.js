@@ -5,7 +5,9 @@ import Photos from './Photos';
 import NewPhotoForm from './NewPhotoForm';
 
 class Profile extends Component {
-
+  componentDidMount() {
+    this.props.getUserPhotos
+  }
   render() {
 
     const profileInfo = {
