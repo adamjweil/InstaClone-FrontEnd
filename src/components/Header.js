@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = () => (
+const Header = (props) => (
   <header>
-    <h3>InstaClone</h3>
+    
     <ul className="main-nav">
+      <h2 className="NavHeader">InstaClone</h2>
       <li><NavLink exact to="/">Home</NavLink></li>
       <li><NavLink to="/Profile">Profile</NavLink></li>
       <li><NavLink to="/about">About</NavLink></li>
