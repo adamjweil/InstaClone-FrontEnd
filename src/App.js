@@ -28,9 +28,9 @@ class App extends Component {
   }
 
   getUserPhotos = () => {
-    fetch('http://localhost:3000/adamjweil')
+    fetch('https://instagramclone-aweil.herokuapp.com/adamjweil')
     .then(function(response) {
-      return response.json();
+      // return response.json();
     })
     .then((obj) => {
       this.setState({ userPhotos: obj })
@@ -38,7 +38,7 @@ class App extends Component {
   };
 
   getPhotos = () => {
-    fetch('http://localhost:3000/photos')
+    fetch('https://instagramclone-aweil.herokuapp.com/photos')
     .then(function(response){
       return response.json();
       })
@@ -75,7 +75,7 @@ class App extends Component {
   newPhotoSubmitHandler = e => {
     e.preventDefault();
     let that = this;
-    fetch('http://localhost:3000/photos', {
+    fetch('https://instagramclone-aweil.herokuapp.com/photos', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
