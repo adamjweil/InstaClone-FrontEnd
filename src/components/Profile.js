@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileInfo from './ProfileInfo';
 import Photos from './Photos';
+import NewPhotoForm from './NewPhotoForm';
 
 class Profile extends Component {
 
@@ -14,8 +15,17 @@ class Profile extends Component {
 
     return (
       <div className="main-content home">
-        <h2>Profile</h2>
         <ProfileInfo profileInfo={profileInfo} />
+        <NewPhotoForm
+          newPhotoSubmitHandler={this.props.newPhotoSubmitHandler}
+          handlePhotoInput={this.props.handlePhotoInput}
+          handleBlurbInput={this.props.handleBlurbInput}
+          handleUsernameInput={this.props.handleUsernameInput}
+          handleDateInput={this.props.handleDateInput}
+          base64={this.props.base64}
+          blurb={this.props.blurb}
+          username={this.props.username}
+          created_at={this.props.created_at} />
         <div>
         <Photos photos={this.props.photos} title="Timeline" />
         </div>

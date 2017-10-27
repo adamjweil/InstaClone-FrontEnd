@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import $ from 'jquery';
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -13,19 +14,74 @@ class App extends Component {
     super();
     this.state = {
       photos: [],
-      newPhoto: {},
+      blurb: "",
+      base64: "",
+      username: "",
+      created_at: "",
     };
+    this.newPhotoSubmitHandler = this.newPhotoSubmitHandler.bind(this);
+    this.handlePhotoInput = this.handlePhotoInput.bind(this);
+    this.handleDateInput = this.handleDateInput.bind(this);
+    this.handleBlurbInput = this.handleBlurbInput.bind(this);
+    this.handleUsernameInput = this.handleUsernameInput.bind(this);
   }
 
-  componentDidMount() {
+  getPhotos = () => {
     fetch('http://localhost:3000/photos')
     .then(function(response){
       return response.json();
       })
       .then((obj) => {
-        console.log(obj)
-        this.setState({photos: obj});
+      this.setState({photos: obj});
+    })
+  }
+  componentDidMount() {
+    this.getPhotos();
+  }
+
+  handlePhotoInput = e => {
+    e.preventDefault();
+    let that = this;
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.readAsDataURL(file)
+      reader.onload = function(event) {
+        that.setState({base64: reader.result})
+      }
+    };
+  // handlePhotoInput = e =>
+  //   this.setState({ base64: e.target.file });
+
+  handleBlurbInput = e =>
+    this.setState({ blurb: e.target.value });
+  handleUsernameInput = e =>
+    this.setState({ username: e.target.value });
+  handleDateInput = e =>
+    this.setState({ created_at: e.target.value });
+
+  newPhotoSubmitHandler = e => {
+    e.preventDefault();
+    let that = this;
+    fetch('http://localhost:3000/photos', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        blurb: this.state.blurb,
+        base64: this.state.base64,
+        username: this.state.username
       })
+    })
+      .then(function(response){
+        return response.json();
+      })
+      .then((obj) => {
+        this.setState({photos: [obj].concat(that.state.photos)})
+      })
+      .catch(error => console.error("fetch error: ", error))
+      // this.getPhotos();
   }
 
   render() {
@@ -34,8 +90,23 @@ class App extends Component {
         <div className="App">
           <Header />
             <Switch>
-              <Route exact path="/" render={ () => <Home photos={this.state.photos} title="Recently Added Photos" /> } />
-              <Route path="/profile" render={ () => <Profile photos={this.state.photos} /> } />
+              <Route exact path="/" render={ () => <Home
+                                                    photos={this.state.photos}
+                                                    title="Recently Added Photos"
+                                                    NavHeader="Home Page" /> } />
+              <Route path="/profile" render={ () => <Profile
+                                                    photos={this.state.photos}
+                                                    title="Timeline"
+                                                    NavHeader="Profile Page"
+                                                    newPhotoSubmitHandler={this.newPhotoSubmitHandler}
+                                                    handleBlurbInput={this.handleBlurbInput}
+                                                    handlePhotoInput={this.handlePhotoInput}
+                                                    handleUsernameInput={this.handleUsernameInput}
+                                                    handleDateInput={this.handleDateInput}
+                                                    base64={this.state.base64}
+                                                    blurb={this.state.blurb}
+                                                    username={this.state.username}
+                                                    created_at={this.state.created_at} /> } />
               <Route path="/about" render={ () => <About /> } />
             </Switch>
           </div>
