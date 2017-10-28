@@ -18,6 +18,7 @@ class Home extends Component {
           base64={this.props.base64}
           blurb={this.props.blurb}
           username={this.props.username}
+          userField={this.props.userField}
           created_at={this.props.created_at} />
       </div>
     );

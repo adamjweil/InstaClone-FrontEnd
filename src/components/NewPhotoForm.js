@@ -12,26 +12,32 @@ class NewPhotoForm extends Component {
     return (
       <section id="new-photo-form">
         <p id="new-photo-form">Post a Photo</p>
-        <form onSubmit={this.props.newPhotoSubmitHandler} >
-          <input
-            type="file"
-            onChange={this.props.handlePhotoInput} />
-          <input
-            type="textarea"
-            onChange={this.props.handleBlurbInput}
-            value={this.props.blurb}
-            placeholder="Description" />
-          <input
-            type="text"
-            onChange={this.props.handleUsernameInput}
-            value={this.props.username}
-            placeholder="Username" />
-          <input
-            type="hidden"
-            onChange={this.props.handleDateInput}
-            value={now} />
+          <form onSubmit={this.props.newPhotoSubmitHandler} >
 
-          <button type="submit" name="submit" value="submit">SUBMIT</button>
+            <input
+              type="file"
+              onChange={this.props.handlePhotoInput} />
+            <input
+              type="textarea"
+              onChange={this.props.handleBlurbInput}
+              value={this.props.blurb}
+              placeholder="Description" />
+
+            {this.props.userField
+              ?
+            <input
+              type="text"
+              onChange={this.props.handleUsernameInput}
+              value={this.props.username}
+              placeholder="Username" />
+              : null
+
+            }
+            <input
+              type="hidden"
+              value={now} />
+
+            <button type="submit" name="submit" value="submit">SUBMIT</button>
 
         </form>
 

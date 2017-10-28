@@ -16,7 +16,7 @@ class Photo extends Component {
     // const preURL = "https://instagramclone-aweil.herokuapp.com"
     return (
       <div className="photo">
-          <img className="photoimg" src={preURL+ photo.photo_url} />
+          <img className="photoimg" src={photo.photo_url} />
           <div className="posted-by">
             <div className="author">
               Posted by {photo.username}
