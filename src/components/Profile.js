@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProfileInfo from './ProfileInfo';
 import Photos from './Photos';
 import NewPhotoForm from './NewPhotoForm';
+import UserPhotos from './UserPhotos';
 
 class Profile extends Component {
   componentDidMount() {
@@ -20,16 +21,18 @@ class Profile extends Component {
         <ProfileInfo profileInfo={profileInfo} />
         <NewPhotoForm
           newPhotoSubmitHandler={this.props.newPhotoSubmitHandler}
-          handlePhotoInput={this.props.handlePhotoInput}
-          handleBlurbInput={this.props.handleBlurbInput}
-          handleUsernameInput={this.props.handleUsernameInput}
-          handleDateInput={this.props.handleDateInput}
+          handlePhotoInput={this.props.handlePhotoInput.bind(this)}
+          handleBlurbInput={this.props.handleBlurbInput.bind(this)}
+          handleUsernameInput={this.props.handleUsernameInput.bind(this)}
+          handleStaticUsernameInput={this.props.handleStaticUsernameInput.bind(this)}
+          handleDateInput={this.props.handleDateInput.bind(this)}
           base64={this.props.base64}
           blurb={this.props.blurb}
           username={this.props.username}
+          userField={this.props.userField}
           created_at={this.props.created_at} />
         <div>
-        <Photos photos={this.props.photos} title="Timeline" />
+        <UserPhotos photos={this.props.photos} title="Timeline" />
         </div>
       </div>
     );
