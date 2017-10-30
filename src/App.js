@@ -110,6 +110,10 @@ class App extends Component {
       base64: "",
       username: "",
       created_at: "",
+      profileInfo: {
+        photoUrl: "https://avatars3.githubusercontent.com/u/25589910?v=4&s=400",
+        bio: "Hi, my name is Adam Weil! This is a small project I worked on to get more familiarized with React and Paperclip!"
+      },
     };
     this.newPhotoSubmitHandler = this.newPhotoSubmitHandler.bind(this);
     this.handlePhotoInput = this.handlePhotoInput.bind(this);
@@ -117,6 +121,7 @@ class App extends Component {
     this.handleBlurbInput = this.handleBlurbInput.bind(this);
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handleStaticUsernameInput = this.handleStaticUsernameInput.bind(this);
+    this.handleAvatarInput = this.handleAvatarInput.bind(this);
     // this.showTechDetails = this.showTechDetails.bind(this);
   }
 
@@ -171,6 +176,31 @@ class App extends Component {
     this.setState({ username: "@AdamJWeil" });
   handleDateInput = e =>
     this.setState({ created_at: e.target.value });
+  handleAvatarInput = e => {
+    e.preventDefault();
+    let that = this;
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.readAsDataURL(file)
+      reader.onload = function(event) {
+        that.setState({
+          profileInfo: {
+          photoUrl: reader.result,
+          bio: that.state.profileInfo.bio
+          }
+      })
+    }
+  };
+  newAvatarSubmitHandler = e => {
+    e.preventDefault();
+    this.setState({
+      profileInfo: {
+        photoUrl: this.state.profileInfo.photoUrl,
+        bio: this.state.profileInfo.bio
+      }
+    })
+  };
+
 
   newUserPhotoSubmitHandler = e => {
     e.preventDefault();
@@ -251,6 +281,9 @@ class App extends Component {
                                                     created_at={this.state.created_at} /> } />
               <Route path="/profile" render={ () => <Profile
                                                     photos={this.state.photos}
+                                                    profileInfo={this.state.profileInfo}
+                                                    handleAvatarInput={this.handleAvatarInput}
+                                                    newAvatarSubmitHandler={this.newAvatarSubmitHandler}
                                                     title="Timeline"
                                                     getUserPhotos={this.getUserPhotos}
                                                     userPhotos={this.state.userPhotos}

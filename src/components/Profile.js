@@ -18,7 +18,10 @@ class Profile extends Component {
 
     return (
       <div className="main-content home">
-        <ProfileInfo profileInfo={profileInfo} />
+        <ProfileInfo
+          profileInfo={this.props.profileInfo}
+          handleAvatarInput={this.props.handleAvatarInput}
+          newAvatarSubmitHandler={this.props.newAvatarSubmitHandler} />
         <NewPhotoForm
           newPhotoSubmitHandler={this.props.newPhotoSubmitHandler}
           handlePhotoInput={this.props.handlePhotoInput.bind(this)}
