@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class ProfileInfo extends Component {
-
   render() {
     const { photoUrl, bio } = this.props.profileInfo
-
     return (
       <div className="profile-info">
         <div className="profile-header">
           <div className="avatarColumn">
-            <img className="avatar" src={photoUrl} alt=""/>
+            <img className="avatar" src={photoUrl} alt=""></img>
+            <form><input type="file" onChange={this.props.handleAvatarInput} className="avatarImgButton" /></form>
             <h2>@AdamJWeil</h2>
           </div>
           <div className="avatarColumn">
