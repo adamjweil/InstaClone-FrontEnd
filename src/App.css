@@ -173,6 +173,35 @@ img.avatar {
   font-size: 8px;
   width: 30%;
 }
+.about-overview {
+  width: 900px;
+  height: 125px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ABEBC6;
+  margin-left: 70px;
+}
+.about-overview:hover {
+  border: 1px;
+  border-color: grey;
+  border-style: solid;
+  height: 150px;
+}
+.about-tech-details {
+  width: 900px;
+  height: 125px;
+  margin-left: 70px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ABEBC6;
+}
+.about-tech-details:hover {
+  border: 1px;
+  border-color: grey;
+  border-style: solid;
+  height: 150px;
+}
 .NavHeader {
   margin-right: 300px;
 }

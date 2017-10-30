@@ -117,7 +117,10 @@ class App extends Component {
     this.handleBlurbInput = this.handleBlurbInput.bind(this);
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handleStaticUsernameInput = this.handleStaticUsernameInput.bind(this);
+    // this.showTechDetails = this.showTechDetails.bind(this);
   }
+
+
 
   getUserPhotos = () => {
     fetch('https://localhost:3000/adamjweil')
