@@ -12,7 +12,6 @@ header {
   height: 75px;
   margin-top: 0px;
 }
-
 .group:after {
   content: "";
   display: table;
@@ -47,6 +46,30 @@ input[type=textarea] {
   width: 300px;
   height: 50px;
   font: 20px sans-serif;
+}
+input[type=text] {
+  width: 150px;
+  height: 30px;
+  font: 20px sans-serif;
+  margin-left: 187px;
+  margin-bottom: 10px;
+}
+input[type=file] {
+  opacity: 1;
+  width: 88px;
+  margin-left: 100px;
+}
+textarea {
+  height: 60px;
+  width: 300px;
+  font: 20px sans-serif;
+}
+.new-photo-form {
+  width: 800px;
+  /*padding: 20px;*/
+}
+.new-photo-form button {
+  margin-left: 300px;
 }
 .avatarImgButton {
   width: 80px;
@@ -232,4 +255,10 @@ img.avatar {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.photoPlaceholder {
+  display: inline-block;
+  height: 150px;
+  float: right;
+  /*width: 100px;*/
 }

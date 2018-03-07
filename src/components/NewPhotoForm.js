@@ -1,44 +1,43 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import Button from 'muicss/lib/react/button';
-// import Img from 'react-image';
-// import { Button, IconButton, HamburgerButton, FloatingButton, FlatButton } from 'react-buttons';
-// import PureRenderMixin from 'react-addons-pure-render-mixin';
-// import { Button, IconButton, HamburgerButton, FloatingButton, FlatButton } from 'react-buttons';
+
+
 class NewPhotoForm extends Component {
   render() {
+  const now = Date.now();
 
-    const now = Date.now();
     return (
-      <section id="new-photo-form">
+      <section className="new-photo-form">
         <p id="new-photo-form">Post a Photo</p>
           <form onSubmit={this.props.newPhotoSubmitHandler} >
-
             <input
               type="file"
-              onChange={this.props.handlePhotoInput} />
-            <input
-              type="textarea"
-              onChange={this.props.handleBlurbInput}
-              value={this.props.blurb}
-              placeholder="Description" />
+              onChange={this.props.handlePhotoInput}
+              placeholder=""
+              value="" />
+             <textarea
+               className="blurbInput"
+               value={this.props.blurb}
+               onChange={this.props.handleBlurbInput}
+               placeholder="Enter Photo Description"
+               />
 
-            {this.props.userField
-              ?
-            <input
-              type="text"
-              onChange={this.props.handleUsernameInput}
-              value={this.props.username}
-              placeholder="Username" />
-              : null
-
-            }
+             <img className="photoPlaceholder" src={this.props.base64} />
+             <div className="usernameInput">
+                {this.props.userField
+                  ?
+                <input
+                  type="text"
+                  onChange={this.props.handleUsernameInput}
+                  value={this.props.username}
+                  placeholder="Username" />
+                  : null
+                }
+               </div>
             <input
               type="hidden"
               value={now} />
-
             <button type="submit" name="submit" value="submit">SUBMIT</button>
-
         </form>
 
       </section>

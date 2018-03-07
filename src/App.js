@@ -122,11 +122,13 @@ class App extends Component {
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handleStaticUsernameInput = this.handleStaticUsernameInput.bind(this);
     this.handleAvatarInput = this.handleAvatarInput.bind(this);
-    // this.showTechDetails = this.showTechDetails.bind(this);
+    this.handleFileButton = this.handleFileButton.bind(this);
   }
 
 
-
+  handleFileButton = () => {
+    $("input[type='file']").trigger('click')
+  }
   getUserPhotos = () => {
     fetch('https://localhost:3000/adamjweil')
     .then(function(response) {
@@ -216,6 +218,10 @@ class App extends Component {
         ...this.state.photos
       ]
     });
+    this.setState({
+      base64: '',
+      blurb: ''
+    })
   }
   newPhotoSubmitHandler = e => {
     e.preventDefault();
@@ -230,6 +236,10 @@ class App extends Component {
       },
       ...this.state.photos
     ],
+  })
+  this.setState({
+    base64: '',
+    blurb: ''
   })
     fetch('https://localhost:3000/photos', {
       method: 'post',
@@ -256,6 +266,7 @@ class App extends Component {
         username: ''
       })
       // this.getPhotos();
+      // this.target.files.clear()
       this.getUserPhotos();
   }
 
@@ -277,6 +288,7 @@ class App extends Component {
                                                     base64={this.state.base64}
                                                     blurb={this.state.blurb}
                                                     username={this.state.username}
+                                                    handleFileButton={this.handleFileButton}
                                                     userField="True"
                                                     created_at={this.state.created_at} /> } />
               <Route path="/profile" render={ () => <Profile
@@ -293,6 +305,7 @@ class App extends Component {
                                                     handleUsernameInput={this.handleUsernameInput}
                                                     handleStaticUsernameInput={this.handleStaticUsernameInput}
                                                     handleDateInput={this.handleDateInput}
+                                                    handleFileButton={this.handleFileButton}
                                                     base64={this.state.base64}
                                                     blurb={this.state.blurb}
                                                     username={this.state.username}
